@@ -39,13 +39,13 @@ public class CountryListModel {
     private Integer population;
     @SerializedName("latlng")
     @Expose
-    private List<Integer> latlng = null;
+    private List<Double> latlng = null;
     @SerializedName("demonym")
     @Expose
     private String demonym;
     @SerializedName("area")
     @Expose
-    private Integer area;
+    private Double area;
     @SerializedName("gini")
     @Expose
     private Object gini;
@@ -160,11 +160,11 @@ public class CountryListModel {
         this.population = population;
     }
 
-    public List<Integer> getLatlng() {
+    public List<Double> getLatlng() {
         return latlng;
     }
 
-    public void setLatlng(List<Integer> latlng) {
+    public void setLatlng(List<Double> latlng) {
         this.latlng = latlng;
     }
 
@@ -176,11 +176,11 @@ public class CountryListModel {
         this.demonym = demonym;
     }
 
-    public Integer getArea() {
+    public Double getArea() {
         return area;
     }
 
-    public void setArea(Integer area) {
+    public void setArea(Double area) {
         this.area = area;
     }
 

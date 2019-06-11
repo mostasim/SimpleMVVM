@@ -1,6 +1,6 @@
 package tech.mbsoft.simplemvvm.network;
 
-import java.util.List;
+import java.util.ArrayList;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -10,6 +10,6 @@ public interface CountryService {
 
     //https://restcountries.eu/rest/v2/all
     @GET("all")
-    Call<List<CountryListModel>> listCountry();
+    Call<ArrayList<CountryListModel>> listCountry();
 
 }
