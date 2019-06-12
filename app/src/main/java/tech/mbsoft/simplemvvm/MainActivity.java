@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
             NetworkInfo activeNetwork = manager.getActiveNetworkInfo();
             if (activeNetwork!=null && activeNetwork.isConnected())
             {
-                observeCounryList();
+                observeCountryList();
             }
 
             Log.e("__MAIN__","network state change");
@@ -73,11 +73,11 @@ public class MainActivity extends AppCompatActivity {
 
         if (DetectConnection.checkInternetConnection(this))
         {
-                observeCounryList();
+                observeCountryList();
         }
 
     }
-    private void observeCounryList()
+    private void observeCountryList()
     {
         mainActivityViewModel.getCountryList().observe(this, countryListModels -> {
 

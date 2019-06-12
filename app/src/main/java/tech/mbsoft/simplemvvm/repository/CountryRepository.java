@@ -31,8 +31,9 @@ public class CountryRepository {
                         e.printStackTrace();
                     }
                 }).start();*/
-                data.setValue(response.body());
                 Log.e("___Repository___", "Fetching...");
+                data.setValue(response.body());
+
 
             }
 
