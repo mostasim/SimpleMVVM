@@ -71,10 +71,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        if (DetectConnection.checkInternetConnection(this))
-        {
-                observeCountryList();
-        }
+
 
     }
     private void observeCountryList()
