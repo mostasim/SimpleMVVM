@@ -5,7 +5,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class CountryRestApi {
 
-    public static Retrofit getRetrofitInstance(){
+    public static Retrofit getRetrofitInstance() {
 
         return new Retrofit.Builder()
                 .baseUrl("http://restcountries.eu/rest/v2/")
@@ -13,7 +13,7 @@ public class CountryRestApi {
                 .build();
     }
 
-    public static CountryService getApiService(){
+    public static CountryService getApiService() {
         return getRetrofitInstance().create(CountryService.class);
     }
 }

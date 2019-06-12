@@ -18,8 +18,9 @@ public class CountryRepository {
 
     private ArrayList<CountryListModel> listModels;
 
-    public LiveData<ArrayList<CountryListModel>> getCountryList(){
-        final MutableLiveData<ArrayList<CountryListModel>> data= new MutableLiveData<>();
+    public LiveData<ArrayList<CountryListModel>> getCountryList() {
+
+        final MutableLiveData<ArrayList<CountryListModel>> data = new MutableLiveData<>();
 
         CountryRestApi.getApiService().listCountry().enqueue(new Callback<ArrayList<CountryListModel>>() {
             @Override
@@ -37,7 +38,7 @@ public class CountryRepository {
 
             @Override
             public void onFailure(Call<ArrayList<CountryListModel>> call, Throwable t) {
-                Log.e("___Repository___",t.getLocalizedMessage());
+                Log.e("___Repository___", t.getLocalizedMessage());
             }
         });
         return data;

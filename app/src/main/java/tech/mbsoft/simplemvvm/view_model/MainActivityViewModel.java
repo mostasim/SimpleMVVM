@@ -1,7 +1,6 @@
 package tech.mbsoft.simplemvvm.view_model;
 
 import android.app.Application;
-import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
@@ -13,37 +12,33 @@ import java.util.ArrayList;
 import tech.mbsoft.simplemvvm.repository.CountryRepository;
 import tech.mbsoft.simplemvvm.repository.model.CountryListModel;
 
-public class MainActivityViewModel extends AndroidViewModel{
+public class MainActivityViewModel extends AndroidViewModel {
 
     private CountryRepository countryRepository;
 
-    private MutableLiveData<Boolean> isLoading=new MutableLiveData<>();
+    private MutableLiveData<Boolean> isLoading = new MutableLiveData<>();
     private LiveData<ArrayList<CountryListModel>> countryList;
 
     public MainActivityViewModel(@NonNull Application application) {
         super(application);
-        countryRepository= new CountryRepository();
+        countryRepository = new CountryRepository();
     }
 
-    public void setIsLoading(Boolean isLoading)
-    {
+    public void setIsLoading(Boolean isLoading) {
         this.isLoading.postValue(isLoading);
     }
-    public LiveData<Boolean> getIsLoading()
-    {
+
+    public LiveData<Boolean> getIsLoading() {
         return isLoading;
     }
-    public void setCountryList()
-    {
 
-        countryList=countryRepository.getCountryList();
-
+    public void setCountryList() {
+        countryList = countryRepository.getCountryList();
     }
-    public LiveData<ArrayList<CountryListModel>> getCountryList()
-    {
+
+    public LiveData<ArrayList<CountryListModel>> getCountryList() {
         setIsLoading(true);
         setCountryList();
         return countryList;
     }
-
 }

@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import tech.mbsoft.simplemvvm.R;
 import tech.mbsoft.simplemvvm.repository.model.CountryListModel;
 
-public class CountryListAdapter extends ListAdapter<CountryListModel,CountryListAdapter.CountryListViewHolder> {
+public class CountryListAdapter extends ListAdapter<CountryListModel, CountryListAdapter.CountryListViewHolder> {
 
     CountryListItemClickListener countryListItemClickListener;
 
@@ -26,15 +26,15 @@ public class CountryListAdapter extends ListAdapter<CountryListModel,CountryList
         submitList(countryListModels);
     }
 
-    public CountryListAdapter(@NonNull DiffUtil.ItemCallback<CountryListModel> diffCallback,CountryListItemClickListener countryListItemClickListener) {
+    public CountryListAdapter(@NonNull DiffUtil.ItemCallback<CountryListModel> diffCallback, CountryListItemClickListener countryListItemClickListener) {
         super(diffCallback);
-        this.countryListItemClickListener=countryListItemClickListener;
+        this.countryListItemClickListener = countryListItemClickListener;
     }
 
     @NonNull
     @Override
     public CountryListViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.country_item_row,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.country_item_row, parent, false);
         return new CountryListViewHolder(view);
     }
 
@@ -44,7 +44,7 @@ public class CountryListAdapter extends ListAdapter<CountryListModel,CountryList
 
     }
 
-    public class CountryListViewHolder extends RecyclerView.ViewHolder{
+    public class CountryListViewHolder extends RecyclerView.ViewHolder {
 
         View itemLayout;
         ImageView ivCountryFlag;
@@ -53,14 +53,14 @@ public class CountryListAdapter extends ListAdapter<CountryListModel,CountryList
         public CountryListViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            itemLayout=itemView;
+            itemLayout = itemView;
             ivCountryFlag = itemView.findViewById(R.id.ivCountryFlag);
             tvCountryName = itemView.findViewById(R.id.tvCountryName);
         }
 
         public void bind(final CountryListModel item) {
             tvCountryName.setText(item.getName());
-            itemLayout.setOnClickListener(v-> countryListItemClickListener.onClick(item));
+            itemLayout.setOnClickListener(v -> countryListItemClickListener.onClick(item));
         }
     }
 }
