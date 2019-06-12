@@ -22,7 +22,7 @@ public class MainActivityViewModel extends AndroidViewModel {
     public MainActivityViewModel(@NonNull Application application) {
         super(application);
         countryRepository = new CountryRepository();
-        fetchCountryList();
+        //fetchCountryList();
     }
 
     public void setIsLoading(Boolean isLoading) {
@@ -39,7 +39,7 @@ public class MainActivityViewModel extends AndroidViewModel {
 
     public LiveData<ArrayList<CountryListModel>> getCountryList() {
         setIsLoading(true);
-        //fetchCountryList();
+        fetchCountryList();
         return countryList;
     }
 }
