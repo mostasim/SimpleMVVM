@@ -22,7 +22,8 @@ public class MainActivity extends AppCompatActivity {
 
     private ProgressBar pbIsLoading;
     private RecyclerView rvCountryList;
-    CountryListAdapter countryListAdapter;
+    private MainActivityViewModel mainActivityViewModel;
+    private CountryListAdapter countryListAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
 
         pbIsLoading = findViewById(R.id.pbIsLoading);
         rvCountryList = findViewById(R.id.rvList);
-        MainActivityViewModel mainActivityViewModel = ViewModelProviders.of(this).get(MainActivityViewModel.class);
+        mainActivityViewModel = ViewModelProviders.of(this).get(MainActivityViewModel.class);
 
         // layout manager
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
