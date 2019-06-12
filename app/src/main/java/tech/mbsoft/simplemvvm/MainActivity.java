@@ -1,5 +1,11 @@
 package tech.mbsoft.simplemvvm;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -16,6 +22,7 @@ import java.util.ArrayList;
 import tech.mbsoft.simplemvvm.adapter.CountryDiffCallback;
 import tech.mbsoft.simplemvvm.adapter.CountryListAdapter;
 import tech.mbsoft.simplemvvm.repository.model.CountryListModel;
+import tech.mbsoft.simplemvvm.util.DetectConnection;
 import tech.mbsoft.simplemvvm.view_model.MainActivityViewModel;
 
 public class MainActivity extends AppCompatActivity {
@@ -24,6 +31,21 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView rvCountryList;
     private MainActivityViewModel mainActivityViewModel;
     private CountryListAdapter countryListAdapter;
+
+    private BroadcastReceiver networkStateReceiver=new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            ConnectivityManager manager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+            NetworkInfo activeNetwork = manager.getActiveNetworkInfo();
+            if (activeNetwork!=null && activeNetwork.isConnected())
+            {
+                observeCounryList();
+            }
+
+            Log.e("__MAIN__","network state change");
+
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +71,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        if (DetectConnection.checkInternetConnection(this))
+        {
+                observeCounryList();
+        }
+
+    }
+    private void observeCounryList()
+    {
         mainActivityViewModel.getCountryList().observe(this, countryListModels -> {
 
             if (countryListAdapter == null) {
@@ -65,8 +95,19 @@ public class MainActivity extends AppCompatActivity {
             Log.e("__Main__", countryListModels.get(0).getName());
         });
     }
-
     private void updateList(ArrayList<CountryListModel> countryListModels) {
         countryListAdapter.submitList(countryListModels);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        registerReceiver(networkStateReceiver, new IntentFilter(android.net.ConnectivityManager.CONNECTIVITY_ACTION));
+    }
+
+    @Override
+    public void onPause() {
+        unregisterReceiver(networkStateReceiver);
+        super.onPause();
     }
 }

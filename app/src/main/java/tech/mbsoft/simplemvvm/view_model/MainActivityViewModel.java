@@ -32,7 +32,7 @@ public class MainActivityViewModel extends AndroidViewModel {
         return isLoading;
     }
 
-    private void fetchCountryList() {
+    public void fetchCountryList() {
         countryList = countryRepository.getCountryList();
     }
 
