@@ -33,8 +33,6 @@ public class CountryRepository {
                 }).start();*/
                 Log.e("___Repository___", "Fetching...");
                 data.setValue(response.body());
-
-
             }
 
             @Override

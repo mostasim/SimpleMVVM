@@ -41,9 +41,7 @@ public class MainActivity extends AppCompatActivity {
             {
                 observeCountryList();
             }
-
             Log.e("__MAIN__","network state change");
-
         }
     };
 
@@ -70,9 +68,6 @@ public class MainActivity extends AppCompatActivity {
                 rvCountryList.setVisibility(View.VISIBLE);
             }
         });
-
-
-
     }
     private void observeCountryList()
     {
