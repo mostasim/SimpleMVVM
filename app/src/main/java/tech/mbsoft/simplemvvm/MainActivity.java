@@ -1,23 +1,21 @@
 package tech.mbsoft.simplemvvm;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import java.util.ArrayList;
-import java.util.Arrays;
 
 import tech.mbsoft.simplemvvm.adapter.CountryDiffCallback;
 import tech.mbsoft.simplemvvm.adapter.CountryListAdapter;
-import tech.mbsoft.simplemvvm.adapter.CountryListItemClickListener;
 import tech.mbsoft.simplemvvm.repository.model.CountryListModel;
 import tech.mbsoft.simplemvvm.view_model.MainActivityViewModel;
 
@@ -59,16 +57,21 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        mainActivityViewModel.getCountryList().observe(this, new Observer<ArrayList<CountryListModel>>() {
-            @Override
-            public void onChanged(ArrayList<CountryListModel> countryListModels) {
+        mainActivityViewModel.getCountryList().observe(this, countryListModels -> {
 
-                countryListAdapter = new CountryListAdapter(new CountryDiffCallback(),
-                        country -> updateList(countryListModels));
-                rvCountryList.setAdapter(countryListAdapter);
-                countryListAdapter.submitList(countryListModels);
-                Log.e("__Main__",countryListModels.get(0).getName());
-            }
+           if (countryListAdapter == null)
+           {
+               countryListAdapter = new CountryListAdapter(new CountryDiffCallback(),
+                       country -> {
+                           updateList(countryListModels);
+                           Toast.makeText(MainActivity.this, ""+country.getName(), Toast.LENGTH_SHORT).show();
+                       });
+           }
+
+            rvCountryList.setAdapter(countryListAdapter);
+            countryListAdapter.submitList(countryListModels);
+            mainActivityViewModel.setIsLoading(false);
+            Log.e("__Main__",countryListModels.get(0).getName());
         });
 
     }

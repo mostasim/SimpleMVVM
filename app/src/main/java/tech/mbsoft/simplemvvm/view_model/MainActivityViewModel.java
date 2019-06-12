@@ -15,11 +15,14 @@ import tech.mbsoft.simplemvvm.repository.model.CountryListModel;
 
 public class MainActivityViewModel extends AndroidViewModel{
 
+    private CountryRepository countryRepository;
+
     private MutableLiveData<Boolean> isLoading=new MutableLiveData<>();
-    private LiveData<ArrayList<CountryListModel>> countryList=new MutableLiveData<>();
+    private LiveData<ArrayList<CountryListModel>> countryList;
 
     public MainActivityViewModel(@NonNull Application application) {
         super(application);
+        countryRepository= new CountryRepository();
     }
 
     public void setIsLoading(Boolean isLoading)
@@ -32,27 +35,14 @@ public class MainActivityViewModel extends AndroidViewModel{
     }
     public void setCountryList()
     {
-        CountryRepository countryRepository= new CountryRepository();
+
         countryList=countryRepository.getCountryList();
+
     }
     public LiveData<ArrayList<CountryListModel>> getCountryList()
     {
         setIsLoading(true);
         setCountryList();
-        Thread thread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    Thread.sleep(6000);
-                    Log.e("___VM___","sleeep");
-                    setIsLoading(false);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-        thread.start();
-
         return countryList;
     }
 

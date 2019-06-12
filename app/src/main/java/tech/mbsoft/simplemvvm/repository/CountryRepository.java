@@ -6,7 +6,6 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -25,7 +24,15 @@ public class CountryRepository {
         CountryRestApi.getApiService().listCountry().enqueue(new Callback<ArrayList<CountryListModel>>() {
             @Override
             public void onResponse(Call<ArrayList<CountryListModel>> call, Response<ArrayList<CountryListModel>> response) {
-                data.setValue(response.body());
+              /*  new Thread(()->{
+                    try {
+                        Thread.sleep(2000);
+                        data.postValue(response.body());
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }).start();*/
+                data.postValue(response.body());
             }
 
             @Override
