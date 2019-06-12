@@ -53,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
 
             if (countryListAdapter == null) {
                 countryListAdapter = new CountryListAdapter(new CountryDiffCallback(),
+                        //Item Click Listener
                         country -> {
                             updateList(countryListModels);
                             Toast.makeText(MainActivity.this, "" + country.getName(), Toast.LENGTH_SHORT).show();

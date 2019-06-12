@@ -32,13 +32,13 @@ public class MainActivityViewModel extends AndroidViewModel {
         return isLoading;
     }
 
-    public void setCountryList() {
+    private void fetchCountryList() {
         countryList = countryRepository.getCountryList();
     }
 
     public LiveData<ArrayList<CountryListModel>> getCountryList() {
         setIsLoading(true);
-        setCountryList();
+        fetchCountryList();
         return countryList;
     }
 }

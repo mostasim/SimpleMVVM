@@ -16,8 +16,6 @@ import tech.mbsoft.simplemvvm.repository.model.CountryListModel;
 public class CountryRepository {
 
 
-    private ArrayList<CountryListModel> listModels;
-
     public LiveData<ArrayList<CountryListModel>> getCountryList() {
 
         final MutableLiveData<ArrayList<CountryListModel>> data = new MutableLiveData<>();
