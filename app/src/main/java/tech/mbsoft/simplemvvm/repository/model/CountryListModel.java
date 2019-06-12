@@ -1,6 +1,8 @@
 
 package tech.mbsoft.simplemvvm.repository.model;
 
+import androidx.annotation.Nullable;
+
 import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -272,4 +274,10 @@ public class CountryListModel {
         this.cioc = cioc;
     }
 
+    @Override
+    public boolean equals(@Nullable Object obj) {
+
+        CountryListModel item = (CountryListModel) obj;
+        return  (item.getName().equals(getName()));
+    }
 }
