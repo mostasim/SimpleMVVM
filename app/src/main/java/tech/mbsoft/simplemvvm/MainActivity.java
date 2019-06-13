@@ -50,6 +50,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        registerReceiver(networkStateReceiver, new IntentFilter(android.net.ConnectivityManager.CONNECTIVITY_ACTION));
+
         pbIsLoading = findViewById(R.id.pbIsLoading);
         rvCountryList = findViewById(R.id.rvList);
         mainActivityViewModel = ViewModelProviders.of(this).get(MainActivityViewModel.class);
@@ -92,14 +94,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onResume() {
-        super.onResume();
-        registerReceiver(networkStateReceiver, new IntentFilter(android.net.ConnectivityManager.CONNECTIVITY_ACTION));
-    }
-
-    @Override
-    public void onPause() {
+    protected void onDestroy() {
+        super.onDestroy();
         unregisterReceiver(networkStateReceiver);
-        super.onPause();
     }
 }
