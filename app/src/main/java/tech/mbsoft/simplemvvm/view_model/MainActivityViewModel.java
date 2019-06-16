@@ -22,7 +22,6 @@ public class MainActivityViewModel extends AndroidViewModel {
     public MainActivityViewModel(@NonNull Application application) {
         super(application);
         countryRepository = new CountryRepository();
-        //fetchCountryList();
     }
 
     public void setIsLoading(Boolean isLoading) {

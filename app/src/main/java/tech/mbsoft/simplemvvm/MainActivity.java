@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
     private MainActivityViewModel mainActivityViewModel;
     private CountryListAdapter countryListAdapter;
 
+    //For changing network state
     private BroadcastReceiver networkStateReceiver=new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {

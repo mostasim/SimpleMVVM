@@ -8,7 +8,7 @@ public class CountryRestApi {
     public static Retrofit getRetrofitInstance() {
 
         return new Retrofit.Builder()
-                .baseUrl("http://restcountries.eu/rest/v2/")
+                .baseUrl(RestApiConfig.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
     }
