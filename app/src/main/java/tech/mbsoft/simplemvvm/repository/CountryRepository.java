@@ -16,6 +16,8 @@ import tech.mbsoft.simplemvvm.repository.model.CountryListModel;
 public class CountryRepository {
 
 
+    public static final String TAG = "___Repository___";
+
     public LiveData<ArrayList<CountryListModel>> getCountryList() {
 
         final MutableLiveData<ArrayList<CountryListModel>> data = new MutableLiveData<>();
@@ -31,13 +33,13 @@ public class CountryRepository {
                         e.printStackTrace();
                     }
                 }).start();*/
-                Log.e("___Repository___", "Fetching...");
+                Log.e(TAG, "Fetching...");
                 data.setValue(response.body());
             }
 
             @Override
             public void onFailure(Call<ArrayList<CountryListModel>> call, Throwable t) {
-                Log.e("___Repository___", t.getLocalizedMessage());
+                Log.e(TAG, t.getLocalizedMessage());
             }
         });
         return data;

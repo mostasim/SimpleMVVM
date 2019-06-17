@@ -27,22 +27,23 @@ import tech.mbsoft.simplemvvm.view_model.MainActivityViewModel;
 
 public class MainActivity extends AppCompatActivity {
 
+    public static final String TAG = "__MAIN__";
+
     private ProgressBar pbIsLoading;
     private RecyclerView rvCountryList;
     private MainActivityViewModel mainActivityViewModel;
     private CountryListAdapter countryListAdapter;
 
     //For changing network state
-    private BroadcastReceiver networkStateReceiver=new BroadcastReceiver() {
+    private BroadcastReceiver networkStateReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
             ConnectivityManager manager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
             NetworkInfo activeNetwork = manager.getActiveNetworkInfo();
-            if (activeNetwork!=null && activeNetwork.isConnected())
-            {
+            if (activeNetwork != null && activeNetwork.isConnected()) {
                 observeCountryList();
             }
-            Log.e("__MAIN__","network state change");
+            Log.e(TAG, "network state change");
         }
     };
 
@@ -72,8 +73,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-    private void observeCountryList()
-    {
+
+    private void observeCountryList() {
         mainActivityViewModel.getCountryList().observe(this, countryListModels -> {
 
             if (countryListAdapter == null) {
@@ -87,9 +88,10 @@ public class MainActivity extends AppCompatActivity {
             rvCountryList.setAdapter(countryListAdapter);
             countryListAdapter.submitList(countryListModels);
             mainActivityViewModel.setIsLoading(false);
-            Log.e("__Main__", countryListModels.get(0).getName());
+            Log.e(TAG, countryListModels.get(0).getName());
         });
     }
+
     private void updateList(ArrayList<CountryListModel> countryListModels) {
         countryListAdapter.submitList(countryListModels);
     }
