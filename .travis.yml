@@ -16,7 +16,7 @@ cache:
 env:
   global:
     - ANDROID_API=28
-    - EMULATOR_API=21
+    - EMULATOR_API=22
     - ANDROID_BUILD_TOOLS=28.0.3
     - ADB_INSTALL_TIMEOUT=5 # minutes
     - secure: "GwdoCzjfAHtbDtvxzbQl7ec20DpjquNM+L3FNU8VBtIq86zKNkKzPjW5Y6mZlYieF9nW9ZAxPo/iV0+ehe8OXhInRbnuSFDMxLEQH+piiR/vIVg20h1y4Mogj0tmX/7BM/saVlE5MG/sIO95iy2NsXMirJP92wuN1m44SkD+cZXqagpvgoqJehYsWnlz4btD9kQN5CyugYZmmtnTEwTS0H2UBuiPYw+Qk3Se+0h480ZXgSWlP0lh9hddLaTB1vI3LRp0BQWKSA/vaKU3i1R02Y2Yw+O613LTP1dvT+gO6zqMLX0KN8Rl0qlCXZaNjn4dLlZgaOW1GafWRFSP5CavRJDwRj9PdRmOWPqwP0SwOSAq7x+WoUFy+iQL7l1c1kCqqRwOmOF+0hnJxcHCQQ6b+ckB0ufi/ZCwGGW/L0nqihFuvhtlamr4LHAuV8RN0kZCoD9Y6iLlBrjFS06URilyVz+yUT3AtH6M6nN0E9AFXaXCXtuKRuG4qOwoPubbku847KeDeixA2B1DAgFhg27yjGJxKIuEjVBSfD2cYqlztJufT0xViClqLhbbqBowLfdO7+yn20cXqdBytyT6b0+/JY89DIch4uFJdIFPwdCd5K/Y5Cqj16+k7UnZt0bVGPjLH0r7Mn4QOnXCLwVYXbCWuMNWp4RDS1u1J6uY2mHmNrA="
@@ -34,7 +34,7 @@ android:
     - extra-android-m2repository # for design library
     - addon-google_apis-google-19 # google play services
     - sys-img-armeabi-v7a-addon-google_apis-google-$ANDROID_API_LEVEL
-    - sys-img-armeabi-v7a-addon-google_apis-google-$EMULATOR_API_LEVEL
+    - sys-img-armeabi-v7a-android-22
 
   licenses:
     - android-sdk-preview-license-.+
@@ -51,13 +51,13 @@ before_install:
 #Source: https://medium.com/@oldergod/constraint-layout-and-circleci-travis-d50342696d2
 
 before_script:
-#  - echo no | android create avd --force -n test -t android-21 --abi armeabi-v7a
-#  - emulator -avd test -no-skin -no-audio -no-window &
-#  - android-wait-for-emulator
-#  - adb shell input keyevent 82 &
+  - echo no | android create avd --force -n test -t android-22 --abi armeabi-v7a
+  - emulator -avd test -no-skin -no-audio -no-window &
+  - android-wait-for-emulator
+  - adb shell input keyevent 82
 
 script:
-  - "./gradlew clean build -PdisablePreDex --stacktrace"
+  - "./gradlew clean build connectedAndroidTest -PdisablePreDex --stacktrace"
 
 before_deploy:
 # - cp $TRAVIS_BUILD_DIR/SimpleMVVM.jks $HOME
