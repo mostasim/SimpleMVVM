@@ -35,16 +35,10 @@ android:
     - build-tools-$ANDROID_BUILD_TOOLS
     - android-$ANDROID_API
     - android-$EMULATOR_API_LEVEL
-    - build-tools-23.0.1
-    - build-tools-25.0.2
-    - android-4
-    - android-10
-    - android-19
-    - android-23
-    - android-25
     - extra-google-m2repository
     - extra-android-m2repository # for design library
     - addon-google_apis-google-19 # google play services
+    - sys-img-x86-android-25
     - sys-img-armeabi-v7a-android-25
 
   licenses:
@@ -63,12 +57,9 @@ before_install:
 
 before_script:
   # Create and start emulator
-  - android list targets
-  - jdk_switcher use oraclejdk8
-  - echo no | android create avd --force -n test -t $ANDROID_TARGET --abi $ANDROID_ABI
-  - emulator -avd test -no-skin -no-audio -no-window &
-  - adb wait-for-device
-  - while [[ `adb shell pm path android` == 'Error'* ]]; do sleep 2; done
+  - echo no | android create avd --force -n test -t android-25 --abi armeabi-v7a -c 100M
+  - emulator -avd test -no-audio -no-window &
+  - android-wait-for-emulator
   - adb shell input keyevent 82 &
 
 
