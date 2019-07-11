@@ -59,7 +59,7 @@ before_script:
 
 
 script:
-  - "./gradlew clean build connectedAndroidTest -PdisablePreDex --stacktrace"
+  - "./gradlew clean build connectedCheck -PdisablePreDex --stacktrace"
 
 before_deploy:
 # - cp $TRAVIS_BUILD_DIR/SimpleMVVM.jks $HOME
