@@ -60,13 +60,13 @@ script:
   - "./gradlew clean build connectedCheck -PdisablePreDex --stacktrace"
 
 before_deploy:
-  - cp $TRAVIS_BUILD_DIR/SimpleMVVM.jks $HOME
-  - cd app/build/outputs/apk/
-  - jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore $HOME/SimpleMVVM.jks -storepass $storepass -keypass $keypass app-release-unsigned.apk SimpleMVVM
+ # - cp $TRAVIS_BUILD_DIR/SimpleMVVM.jks $HOME
+#  - cd app/build/outputs/apk/
+ # - jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore $HOME/SimpleMVVM.jks -storepass $storepass -keypass $keypass app-release-unsigned.apk SimpleMVVM
 
   # Verification
-  - jarsigner -verify app-release-unsigned.apk
-  - "${ANDROID_HOME}/build-tools/24.0.2/zipalign -v 4 app-release-unsigned.apk SimpleMVVM.apk"
+ # - jarsigner -verify app-release-unsigned.apk
+ # - "${ANDROID_HOME}/build-tools/24.0.2/zipalign -v 4 app-release-unsigned.apk SimpleMVVM.apk"
 
 deploy:
   provider: releases
