@@ -15,14 +15,14 @@ cache:
 
 env:
   matrix:
-    - API=android-15 ABI=armeabi-v7a
-    - API=android-16 ABI=armeabi-v7a
-    - API=android-17 ABI=armeabi-v7a
-    - API=android-18 ABI=armeabi-v7a
-    - API=android-19 ABI=armeabi-v7a
-    - API=android-21 ABI=armeabi-v7a
+#    - API=android-15 ABI=armeabi-v7a
+#    - API=android-16 ABI=armeabi-v7a
+#    - API=android-17 ABI=armeabi-v7a
+#    - API=android-18 ABI=armeabi-v7a
+#    - API=android-19 ABI=armeabi-v7a
+#    - API=android-21 ABI=armeabi-v7a
     - API=android-22 ABI=armeabi-v7a
-    - API=android-24 ABI=armeabi-v7a
+    - API=android-25 ABI=armeabi-v7a
     - API=android-24 ABI=arm64-v8a
   global:
     - ANDROID_API=28
@@ -47,9 +47,9 @@ android:
     - extra-google-m2repository
     - extra-android-m2repository # for design library
     - addon-google_apis-google-19 # google play services
-    - sys-img-x86-android-25
     - sys-img-armeabi-v7a-android-25
-    - extra-intel-Hardware_Accelerated_Execution_Manager-6.2.9
+    - sys-img-arm64-v8a-android-24
+
 
   licenses:
     - android-sdk-preview-license-.+
