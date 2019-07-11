@@ -14,6 +14,11 @@ cache:
     - $HOME/.gradle/wrapper/
 
 env:
+  matrix:
+    - ANDROID_TARGET=android-4 ANDROID_ABI=armeabi
+    - ANDROID_TARGET=android-10 ANDROID_ABI=armeabi
+    - ANDROID_TARGET=android-19 ANDROID_ABI=armeabi-v7a
+    - ANDROID_TARGET=android-25 ANDROID_ABI=armeabi-v7a
   global:
     - ANDROID_API=28
     - EMULATOR_API=22
@@ -30,6 +35,13 @@ android:
     - build-tools-$ANDROID_BUILD_TOOLS
     - android-$ANDROID_API
     - android-$EMULATOR_API_LEVEL
+    - build-tools-23.0.1
+    - build-tools-25.0.2
+    - android-4
+    - android-10
+    - android-19
+    - android-23
+    - android-25
     - extra-google-m2repository
     - extra-android-m2repository # for design library
     - addon-google_apis-google-19 # google play services
@@ -50,10 +62,15 @@ before_install:
 #Source: https://medium.com/@oldergod/constraint-layout-and-circleci-travis-d50342696d2
 
 before_script:
-  - echo no | android create avd --force -n test -t android-25 --abi armeabi-v7a
+  # Create and start emulator
+  - android list targets
+  - jdk_switcher use oraclejdk8
+  - echo no | android create avd --force -n test -t $ANDROID_TARGET --abi $ANDROID_ABI
   - emulator -avd test -no-skin -no-audio -no-window &
-  - android-wait-for-emulator
-  - adb shell input keyevent 82
+  - adb wait-for-device
+  - while [[ `adb shell pm path android` == 'Error'* ]]; do sleep 2; done
+  - adb shell input keyevent 82 &
+
 
 script:
   - "./gradlew clean build connectedAndroidTest -PdisablePreDex --stacktrace"
