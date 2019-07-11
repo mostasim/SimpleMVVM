@@ -96,6 +96,7 @@ public class MainActivity extends AppCompatActivity {
         countryListAdapter.submitList(countryListModels);
     }
 
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
