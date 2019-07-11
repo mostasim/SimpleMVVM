@@ -66,11 +66,11 @@ before_install:
 #Source: https://medium.com/@oldergod/constraint-layout-and-circleci-travis-d50342696d2
 
 before_script:
-  - android-update-sdk --components=sys-img-$ABI-$API --accept-licenses='android-sdk-license-[0-9a-f]{8}'
-  - echo no | android create avd --force -n test -t $API --abi $ABI
-  - emulator -avd test -no-audio -no-window
+#  - android-update-sdk --components=sys-img-$ABI-$API --accept-licenses='android-sdk-license-[0-9a-f]{8}'
+#  - echo no | android create avd --force -n test -t $API --abi $ABI
+#  - emulator -avd test -no-audio -no-window
 #  - android-wait-for-emulator
-  - adb shell input keyevent 82 &
+#  - adb shell input keyevent 82 &
 
 script:
   - "./gradlew clean build connectedCheck -PdisablePreDex --stacktrace"
