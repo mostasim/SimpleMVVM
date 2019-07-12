@@ -1,5 +1,12 @@
 steps:
-
+- name: 'gcr.io/cloud-builders/git'
+  entrypoint: 'bash'
+  args:
+  - '-c'
+  - |
+    git config -f .gitmodules submodule.[my-sub-repo-name].url https://source.developers.google.com/p/[my-project]/r/github_[my-sub-repo-name]
+    git submodule init
+    git submodule update
 #
 # Extract the cache
 #
