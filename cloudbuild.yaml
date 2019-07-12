@@ -1,11 +1,4 @@
 steps:
-- id: renameGitHubUrl
-  name: debian
-  args:
-  - sed
-  - -i
-  - 's#git@github.com:___GitHubId___/\(.*\)\.git#https://source.developers.google.com/p/___GCLOUD_PROJECT_ID___/r/github-___GitHubId___-\1#g'
-  - .gitmodules
 #
 # Extract the cache
 #
