@@ -17,6 +17,8 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.analytics.FirebaseAnalytics;
+
 import java.util.ArrayList;
 
 import tech.mbsoft.simplemvvm.adapter.CountryDiffCallback;
@@ -33,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView rvCountryList;
     private MainActivityViewModel mainActivityViewModel;
     private CountryListAdapter countryListAdapter;
-
+    private FirebaseAnalytics mFirebaseAnalytics;
     //For changing network state
     private BroadcastReceiver networkStateReceiver = new BroadcastReceiver() {
         @Override
@@ -52,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
         registerReceiver(networkStateReceiver, new IntentFilter(android.net.ConnectivityManager.CONNECTIVITY_ACTION));
 
         pbIsLoading = findViewById(R.id.pbIsLoading);
@@ -83,6 +86,11 @@ public class MainActivity extends AppCompatActivity {
                         country -> {
                             updateList(countryListModels);
                             Toast.makeText(MainActivity.this, "" + country.getName(), Toast.LENGTH_SHORT).show();
+                            Bundle bundle = new Bundle();
+                            bundle.putString(FirebaseAnalytics.Param.ITEM_ID, country.getNumericCode());
+                            bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, country.getName());
+                            bundle.putString(FirebaseAnalytics.Param.CONTENT_TYPE, "country");
+                            mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle);
                         });
             }
             rvCountryList.setAdapter(countryListAdapter);
