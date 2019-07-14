@@ -1,28 +1,44 @@
-apply plugin: 'com.android.application'
+plugins {
+    id 'com.android.application'
+    id 'com.github.triplet.play' version '2.2.1'
+}
 apply plugin: 'com.google.gms.google-services'
 apply plugin: 'com.google.firebase.firebase-perf'
 
 
+
 android {
+    signingConfigs {
+        releaseConfig {
+            storeFile file('SimpleMVVM.jks')
+            storePassword 'mb121167'
+            keyAlias = 'SimpleMVVM'
+            keyPassword 'mb121167'
+        }
+    }
     compileSdkVersion 28
     defaultConfig {
         applicationId "tech.mbsoft.simplemvvm"
         minSdkVersion 16
         targetSdkVersion 28
-        versionCode 1
-        versionName "1.0"
+        versionCode 3
+        versionName "1.2"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.releaseConfig
         }
     }
     compileOptions {
         sourceCompatibility = '1.8'
         targetCompatibility = '1.8'
     }
+}
+play {
+    serviceAccountCredentials = file("api-5674732235606189969-865985-fc05708ceb06.json")
 }
 
 dependencies {
@@ -51,6 +67,6 @@ dependencies {
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.1.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0'
 
 }
