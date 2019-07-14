@@ -1,6 +1,6 @@
 plugins {
     id 'com.android.application'
-    id 'com.github.triplet.play' version '2.3.0'
+    id 'com.github.triplet.play' version '2.2.1'
 }
 apply plugin: 'com.google.gms.google-services'
 apply plugin: 'com.google.firebase.firebase-perf'
@@ -27,6 +27,9 @@ android {
         sourceCompatibility = '1.8'
         targetCompatibility = '1.8'
     }
+}
+play {
+    serviceAccountCredentials = file("api-5674732235606189969-865985-fc05708ceb06.json")
 }
 
 dependencies {
