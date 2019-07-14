@@ -166,14 +166,14 @@ steps:
   #
   # Deploy to Crashlytics Beta if this is any other branch.
   #
-  - name: 'gcr.io/$PROJECT_ID/android:28'
-    id: deploy_to_beta
-    args: ["for_branch", "develop", "./gradlew", ":app:crashlyticsUploadDistributionDebug"]
-    <<: *env
-    waitFor: ['unit_tests']
-    volumes:
-      - name: 'cache'
-        path: '/gradle_cache'
+#  - name: 'gcr.io/$PROJECT_ID/android:28'
+#    id: deploy_to_beta
+#    args: ["for_branch", "develop", "./gradlew", ":app:crashlyticsUploadDistributionDebug"]
+#    <<: *env
+#    waitFor: ['unit_tests']
+#    volumes:
+#      - name: 'cache'
+#        path: '/gradle_cache'
 
   #
   # Cleanup
@@ -183,7 +183,7 @@ steps:
   - name: 'gcr.io/$PROJECT_ID/tar'
     id: compress_cache
     args: ['cpvzf', '/build_cache/cache.tgz', '-C', '/build_cache', '/build_cache/.gradle']
-    waitFor: ['deploy_to_play', 'deploy_to_beta']
+    waitFor: ['deploy_to_play']
     volumes:
       - name: 'build_cache'
         path: '/build_cache'
