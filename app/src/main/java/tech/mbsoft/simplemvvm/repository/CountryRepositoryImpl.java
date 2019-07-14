@@ -12,8 +12,9 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import tech.mbsoft.simplemvvm.network.CountryRestApi;
 import tech.mbsoft.simplemvvm.repository.model.CountryListModel;
+import tech.mbsoft.simplemvvm.repository.model.CountryRepository;
 
-public class CountryRepository {
+public class CountryRepositoryImpl implements CountryRepository {
 
 
     public static final String TAG = "___Repository___";

@@ -5,7 +5,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class CountryRestApi {
 
-    public static Retrofit getRetrofitInstance() {
+    private static Retrofit getRetrofitInstance() {
 
         return new Retrofit.Builder()
                 .baseUrl(RestApiConfig.BASE_URL)

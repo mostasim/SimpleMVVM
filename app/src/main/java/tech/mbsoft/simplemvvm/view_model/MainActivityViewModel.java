@@ -9,19 +9,19 @@ import androidx.lifecycle.MutableLiveData;
 
 import java.util.ArrayList;
 
-import tech.mbsoft.simplemvvm.repository.CountryRepository;
+import tech.mbsoft.simplemvvm.repository.CountryRepositoryImpl;
 import tech.mbsoft.simplemvvm.repository.model.CountryListModel;
 
 public class MainActivityViewModel extends AndroidViewModel {
 
-    private CountryRepository countryRepository;
+    private CountryRepositoryImpl countryRepository;
 
     private MutableLiveData<Boolean> isLoading = new MutableLiveData<>();
     private LiveData<ArrayList<CountryListModel>> countryList;
 
     public MainActivityViewModel(@NonNull Application application) {
         super(application);
-        countryRepository = new CountryRepository();
+        countryRepository = new CountryRepositoryImpl();
     }
 
     public void setIsLoading(Boolean isLoading) {
