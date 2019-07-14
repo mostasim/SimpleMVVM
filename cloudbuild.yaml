@@ -160,8 +160,7 @@ steps:
     <<: *env
     waitFor: ['unit_tests']
     volumes:
-      - name: 'cache'
-        path: '/gradle_cache'
+      - path: '/gradle_cache'
 
   #
   # Deploy to Crashlytics Beta if this is any other branch.
