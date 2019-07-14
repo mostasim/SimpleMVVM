@@ -39,6 +39,10 @@ android {
 }
 play {
     serviceAccountCredentials = file("api-5674732235606189969-865985-fc05708ceb06.json")
+    resolutionStrategy = "auto"
+    outputProcessor { // this: ApkVariantOutput
+        versionNameOverride = "$versionNameOverride.$versionCode"
+    }
 }
 
 dependencies {
