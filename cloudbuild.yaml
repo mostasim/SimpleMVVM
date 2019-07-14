@@ -159,8 +159,6 @@ steps:
     args: ["for_branch", "master", "./gradlew", ":app:publishReleaseApk"]
     <<: *env
     waitFor: ['unit_tests']
-    volumes:
-      - path: '/gradle_cache'
 
   #
   # Deploy to Crashlytics Beta if this is any other branch.
