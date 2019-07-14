@@ -156,7 +156,7 @@ steps:
   #
   - name: 'gcr.io/$PROJECT_ID/android:28'
     id: deploy_to_play
-    args: ["for_branch", "master", "./gradlew", ":app:publishReleaseProducts"]
+    args: ["for_branch", "master", "./gradlew", ":app:publishReleaseApk"]
     <<: *env
     waitFor: ['unit_tests']
 

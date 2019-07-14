@@ -21,7 +21,7 @@ android {
         applicationId "tech.mbsoft.simplemvvm"
         minSdkVersion 16
         targetSdkVersion 28
-        versionCode 3
+        versionCode 4
         versionName "1.2"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -39,6 +39,10 @@ android {
 }
 play {
     serviceAccountCredentials = file("api-5674732235606189969-865985-fc05708ceb06.json")
+    // Overrides defaults
+    track = "production" // internal/alpha/beta/production
+    userFraction = 0.5
+    releaseStatus = "completed" // completed/draft/inProgress/halted
     resolutionStrategy = "auto"
     outputProcessor { // this: ApkVariantOutput
         versionNameOverride = "$versionNameOverride.$versionCode"
