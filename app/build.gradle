@@ -73,6 +73,12 @@ dependencies {
     implementation 'com.google.firebase:firebase-core:17.0.0'
     implementation 'com.google.firebase:firebase-perf:18.0.1'
 
+    //dagger
+
+    api 'com.google.dagger:dagger-android:2.25.2'
+    api 'com.google.dagger:dagger-android-support:2.25.2' // if you use the support libraries
+    annotationProcessor 'com.google.dagger:dagger-android-processor:2.25.2'
+
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0'

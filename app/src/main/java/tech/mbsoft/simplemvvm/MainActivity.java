@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import androidx.annotation.UiThread;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -103,6 +104,7 @@ public class MainActivity extends AppCompatActivity {
     private void updateList(ArrayList<CountryListModel> countryListModels) {
         countryListAdapter.submitList(countryListModels);
     }
+    @UiThread
 
 
     @Override
