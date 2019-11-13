@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">SimpleMVVM</string>
+    <string name="conutry_flag_description">Conutry Flag Description</string>
+    <string name="bangladesh">Bangladesh</string>
 </resources>
