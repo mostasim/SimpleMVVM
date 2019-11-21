@@ -27,7 +27,7 @@ env:
   global:
     - ANDROID_API=29
     #    - EMULATOR_API=22
-    - ANDROID_BUILD_TOOLS=29.0.0
+    - ANDROID_BUILD_TOOLS=29.0.2
     - ADB_INSTALL_TIMEOUT=5 # minutes
     - secure: "GwdoCzjfAHtbDtvxzbQl7ec20DpjquNM+L3FNU8VBtIq86zKNkKzPjW5Y6mZlYieF9nW9ZAxPo/iV0+ehe8OXhInRbnuSFDMxLEQH+piiR/vIVg20h1y4Mogj0tmX/7BM/saVlE5MG/sIO95iy2NsXMirJP92wuN1m44SkD+cZXqagpvgoqJehYsWnlz4btD9kQN5CyugYZmmtnTEwTS0H2UBuiPYw+Qk3Se+0h480ZXgSWlP0lh9hddLaTB1vI3LRp0BQWKSA/vaKU3i1R02Y2Yw+O613LTP1dvT+gO6zqMLX0KN8Rl0qlCXZaNjn4dLlZgaOW1GafWRFSP5CavRJDwRj9PdRmOWPqwP0SwOSAq7x+WoUFy+iQL7l1c1kCqqRwOmOF+0hnJxcHCQQ6b+ckB0ufi/ZCwGGW/L0nqihFuvhtlamr4LHAuV8RN0kZCoD9Y6iLlBrjFS06URilyVz+yUT3AtH6M6nN0E9AFXaXCXtuKRuG4qOwoPubbku847KeDeixA2B1DAgFhg27yjGJxKIuEjVBSfD2cYqlztJufT0xViClqLhbbqBowLfdO7+yn20cXqdBytyT6b0+/JY89DIch4uFJdIFPwdCd5K/Y5Cqj16+k7UnZt0bVGPjLH0r7Mn4QOnXCLwVYXbCWuMNWp4RDS1u1J6uY2mHmNrA="
     - secure: "VLczSgxgE/5RW6kSTtHyf5wuDcCyLk2LHYcZh5qcKTVuru/RXQu/A4QOE6ytp929i9CGaGA3G3V+d4l07vWowVSNGv0558rNM1tWlLMfQI+KDk4B7VANj6ZCoqSTlzau5Uz5RCjHMofzi0o2k3XlUiu9+pXhXbk3ezJgcVB1CboWbp1vqLRum2ZmV/GtKszt1ruoVJwH6j7faL0G5XGEbpXrggjI+CtpG8BPTe+h1sZyuj4CcbOvSkVHAPaSsaYQ0yLh/7dkrBkGutWgtJ3cYqgtrlTZUpAxpJ+srRQ1Rru1w/3bfYW7gqajrmBBqK/1Qij4Pc/1TGbHP6otScpGu6hu2gjgEXKm3jSmzEP5kLISRHeNSfGxnikEi+6pSA7Csg8mIVRn94KKEF7D/2F0lZDGUiv5GQnZv+RIrXcE/wbXwV8XK9GQHH0e4a/Nmg11TdoVx2Q2HkfmZZk/mgwHf3TlpPEcgPvrcjfYHZqbpZkEkdbgM1o3vNnkE8Zs9suXHe1yIXvYpSzBIHBP5to65CSr9XDJJWQ6buWnZ0z9LPlDKFwIi8U4LpAsKyvhq6v6nTtNcj136dsW1KhTckLOfgUcCe37W+PbflU6Hew+JmVhq1fcQDOwBjgX6Aye7sBXHYFtuP3arhO1o9/bUtP8/NP7pzRwAjGMQpevq3EfIBo="
@@ -39,6 +39,7 @@ android:
     - platform-tools
     - build-tools-$ANDROID_BUILD_TOOLS
     - build-tools-25.0.2
+    - build-tools-24.0.3
     #    - android-22
     - android-24
     - android-25
