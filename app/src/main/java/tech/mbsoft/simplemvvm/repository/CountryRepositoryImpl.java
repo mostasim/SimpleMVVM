@@ -17,7 +17,7 @@ import tech.mbsoft.simplemvvm.repository.model.CountryRepository;
 public class CountryRepositoryImpl implements CountryRepository {
 
 
-    public static final String TAG = "___Repository___";
+    private static final String TAG = "___Repository___";
 
     public LiveData<ArrayList<CountryListModel>> getCountryList() {
 
@@ -26,16 +26,7 @@ public class CountryRepositoryImpl implements CountryRepository {
         CountryRestApi.getApiService().listCountry().enqueue(new Callback<ArrayList<CountryListModel>>() {
             @Override
             public void onResponse(Call<ArrayList<CountryListModel>> call, Response<ArrayList<CountryListModel>> response) {
-              /*  new Thread(()->{
-                    try {
-                        Thread.sleep(2000);
-                        data.postValue(response.body());
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }).start();*/
-                Log.e(TAG, "Fetching...");
-                data.setValue(response.body());
+
             }
 
             @Override
